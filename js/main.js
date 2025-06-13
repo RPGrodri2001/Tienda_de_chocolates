@@ -824,6 +824,12 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const section = link.getAttribute('data-section');
             
+            // Si es el enlace del catálogo, redirigir a la página
+            if (section === 'catalog') {
+                window.location.href = 'catalogo.html';
+                return;
+            }
+            
             // Actualizar navegación activa
             document.querySelectorAll('.nav-link').forEach(nav => nav.classList.remove('active'));
             link.classList.add('active');
