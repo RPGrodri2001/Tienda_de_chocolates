@@ -1,11 +1,396 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ChocolateVentas - Dashboard Premium</title>
+    <meta name="description" content="Sistema premium de ventas de chocolates artesanales - Dashboard principal">
+    <meta name="theme-color" content="#8B4513">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+    <!-- Header Premium -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo-icon">🍫</div>
+                <div class="logo-text">
+                    <h1>Three Senses</h1>
+                    <span class="tagline">Premium Chocolates</span>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <a href="#home" class="nav-link active" data-section="home">
+                    <i class="nav-icon">🏠</i>
+                    <span>Inicio</span>
+                </a>
+                <a href="#" class="nav-link" data-section="catalog">
+                    <i class="nav-icon">📦</i>
+                    <span>Catálogo</span>
+                </a>
+                <a href="#offers" class="nav-link" data-section="offers">
+                    <i class="nav-icon">🎯</i>
+                    <span>Ofertas</span>
+                </a>
+                <a href="#about" class="nav-link" data-section="about">
+                    <i class="nav-icon">ℹ️</i>
+                    <span>Nosotros</span>
+                </a>
+                <a href="#contact" class="nav-link" data-section="contact">
+                    <i class="nav-icon">📞</i>
+                    <span>Contacto</span>
+                </a>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="search-toggle" onclick="toggleSearch()" aria-label="Buscar productos">
+                    <i>🔍</i>
+                </button>
+                <button class="cart-widget" onclick="toggleCart()" aria-label="Ver carrito">
+                    <div class="cart-icon">🛒</div>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                    <div class="cart-total">$<span id="cartTotalDisplay">0.00</span></div>
+                </button>
+                <div class="user-menu">
+                    <button class="user-avatar" onclick="toggleUserMenu()" aria-label="Menú de usuario">
+                        <span id="userAvatar">👤</span>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <div class="user-info">
+                            <span class="user-name" id="userName">Usuario</span>
+                            <span class="user-role">Cliente Premium</span>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a href="#profile" class="dropdown-item">
+                            <i>👤</i> Mi Perfil
+                        </a>
+                        <a href="#orders" class="dropdown-item">
+                            <i>📋</i> Mis Pedidos
+                        </a>
+                        <a href="#favorites" class="dropdown-item">
+                            <i>❤️</i> Favoritos
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#settings" class="dropdown-item">
+                            <i>⚙️</i> Configuración
+                        </a>
+                        <button class="dropdown-item logout-btn" onclick="logout()">
+                            <i>🚪</i> Cerrar Sesión
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Search Bar Expandible -->
+        <div class="search-bar-expanded" id="searchBarExpanded">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Buscar chocolates, trufas, bombones..." autocomplete="off">
+                <button class="search-btn" onclick="performSearch()">🔍</button>
+                <button class="search-close" onclick="toggleSearch()">✕</button>
+            </div>
+            <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+    </header>
+
+    <!-- Hero Section Spectacular -->
+    <section class="hero-section">
+        <div class="hero-background">
+            <div class="hero-particles"></div>
+            <div class="hero-shapes">
+                <div class="floating-shape shape-1">🍫</div>
+                <div class="floating-shape shape-2">🍬</div>
+                <div class="floating-shape shape-3">🍭</div>
+                <div class="floating-shape shape-4">💝</div>
+                <div class="floating-shape shape-5">🎂</div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 class="hero-title">
+                    <span class="title-line">Three</span>
+                    <span class="title-line highlight">Senses</span>
+                </h2>
+                <p class="hero-subtitle">
+                    Descubre nuestra exquisita colección de chocolates artesanales, 
+                    creados con los mejores ingredientes del mundo
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Productos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Satisfacción</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50k+</span>
+                        <span class="stat-label">Clientes</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-actions">
+                <button class="cta-primary" onclick="scrollToProducts()">
+                    <span>Explorar Productos</span>
+                    <i>🍫</i>
+                </button>
+                <button class="cta-secondary" onclick="openPromoVideo()">
+                    <span>Ver Video</span>
+                    <i>▶️</i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats Dashboard -->
+    <section class="stats-dashboard">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card featured">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <h3 id="totalProducts">0</h3>
+                        <p>Productos Disponibles</p>
+                        <div class="stat-trend positive">
+                            <span>+12%</span>
+                            <small>vs mes pasado</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🛒</div>
+                    <div class="stat-content">
+                        <h3 id="cartValue">$0.00</h3>
+                        <p>Total en Carrito</p>
+                        <div class="stat-trend neutral">
+                            <span id="cartItems">0</span>
+                            <small>productos</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-content">
+                        <h3>4.9</h3>
+                        <p>Calificación Promedio</p>
+                        <div class="stat-trend positive">
+                            <span>+0.2</span>
+                            <small>este mes</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-content">
+                        <h3>2,847</h3>
+                        <p>Ventas del Mes</p>
+                        <div class="stat-trend positive">
+                            <span>+8%</span>
+                            <small>vs objetivo</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span>Nuestros Productos</span>
+                    <span class="title-accent">Destacados</span>
+                </h2>
+                <p class="section-subtitle">
+                    Cada chocolate es una obra maestra artesanal, elaborada con pasión y los mejores ingredientes
+                </p>
+            </div>
+            
+            <!-- Category Filters -->
+            <div class="category-filters">
+                <button class="filter-btn active" onclick="filterProducts('all', this)" data-category="all">
+                    <span class="filter-icon">🍫</span>
+                    <span>Todos</span>
+                    <div class="filter-badge" id="countAll">0</div>
+                </button>
+                <button class="filter-btn" onclick="filterProducts('trufas', this)" data-category="trufas">
+                    <span class="filter-icon">🍫</span>
+                    <span>Trufas</span>
+                    <div class="filter-badge" id="countTrufas">0</div>
+                </button>
+                <button class="filter-btn" onclick="filterProducts('bombones', this)" data-category="bombones">
+                    <span class="filter-icon">🍬</span>
+                    <span>Bombones</span>
+                    <div class="filter-badge" id="countBombones">0</div>
+                </button>
+                <button class="filter-btn" onclick="filterProducts('tabletas', this)" data-category="tabletas">
+                    <span class="filter-icon">🍫</span>
+                    <span>Tabletas</span>
+                    <div class="filter-badge" id="countTabletas">0</div>
+                </button>
+                <button class="filter-btn" onclick="filterProducts('regalos', this)" data-category="regalos">
+                    <span class="filter-icon">💝</span>
+                    <span>Regalos</span>
+                    <div class="filter-badge" id="countRegalos">0</div>
+                </button>
+            </div>
+            
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded here -->
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="load-more-section">
+                <button class="load-more-btn" onclick="loadMoreProducts()">
+                    <span>Cargar Más Productos</span>
+                    <i>⬇️</i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Envío Gratis</h3>
+                    <p>En compras superiores a $50. Entrega rápida y segura.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Pago Seguro</h3>
+                    <p>Transacciones 100% seguras con encriptación SSL.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎁</div>
+                    <h3>Envoltorio Gratis</h3>
+                    <p>Empaque de regalo elegante sin costo adicional.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌟</div>
+                    <h3>Calidad Premium</h3>
+                    <p>Ingredientes seleccionados y procesos artesanales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="modal-overlay" id="cartModal">
+        <div class="modal-content cart-modal">
+            <div class="modal-header">
+                <h3>
+                    <i>🛒</i>
+                    <span>Carrito de Compras</span>
+                </h3>
+                <button class="modal-close" onclick="closeCart()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="cart-items" id="cartItemsList">
+                    <!-- Cart items will be loaded here -->
+                </div>
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="cartSubtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Envío:</span>
+                        <span id="shippingCost">Gratis</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span id="cartTotal">$0.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="clearCart()">
+                    <i>🗑️</i>
+                    <span>Vaciar Carrito</span>
+                </button>
+                <button class="btn-primary" onclick="proceedToCheckout()">
+                    <i>💳</i>
+                    <span>Proceder al Pago</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner">
+                <div class="spinner-ring"></div>
+                <div class="spinner-icon">🍫</div>
+            </div>
+            <h3>Cargando productos deliciosos...</h3>
+            <p>Preparando la mejor experiencia para ti</p>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section brand">
+                <div class="footer-logo">
+                    <span class="logo-icon">🍫</span>
+                    <h3>ChocolateVentas</h3>
+                </div>
+                <p>Endulzando vidas desde 1995 con chocolates artesanales de la más alta calidad.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link facebook">📘</a>
+                    <a href="#" class="social-link instagram">📷</a>
+                    <a href="#" class="social-link twitter">🐦</a>
+                    <a href="#" class="social-link youtube">📺</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Productos</h4>
+                <ul>
+                    <li><a href="#">Chocolates Premium</a></li>
+                    <li><a href="#">Trufas Artesanales</a></li>
+                    <li><a href="#">Bombones Gourmet</a></li>
+                    <li><a href="#">Regalos Corporativos</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Servicio</h4>
+                <ul>
+                    <li><a href="#">Centro de Ayuda</a></li>
+                    <li><a href="#">Envíos y Devoluciones</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <div class="contact-info">
+                    <p><i>📞</i> +1 (555) 123-4567</p>
+                    <p><i>📧</i> info@chocolateventas.com</p>
+                    <p><i>📍</i> Av. Dulce 123, Ciudad Chocolate</p>
+                    <p><i>🕒</i> Lun-Vie: 9:00-18:00</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ChocolateVentas. Todos los derechos reservados.</p>
+            <p>Hecho con ❤️ y mucho 🍫</p>
+        </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
 </body>
 </html>
